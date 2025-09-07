@@ -1,0 +1,552 @@
+:root {
+    --bg-color: #f0f8ff;
+    --primary-color: #4a90e2;
+    --secondary-color: #ffc107;
+    --accent-color: #f5a623;
+    --text-color: #333;
+    --white: #fff;
+    --correct: #4caf50;
+    --incorrect: #f44336;
+    --font-family: 'Nunito', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overscroll-behavior: none;
+}
+
+#root {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+button {
+    font-family: var(--font-family);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.title-button {
+    background: none;
+    padding: 0;
+}
+
+.title-button h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.title-button h1 span {
+    color: var(--accent-color);
+}
+
+header nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.sparkle-display {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.sticker-book-button {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.sticker-book-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+/* --- Loading Spinner --- */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    gap: 1rem;
+}
+
+.loading-container p {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--bg-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Storage Setup Screen --- */
+.setup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 3rem 1rem;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.setup-container h2 {
+    font-size: 1.8rem;
+}
+
+.setup-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 450px;
+    color: #555;
+}
+
+.setup-container button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 25px;
+}
+
+.setup-container button:hover {
+    background-color: #3a80d2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+/* --- Quest Selection --- */
+.quest-selection-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.welcome-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-message p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.quest-generator {
+    display: flex;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.quest-generator input {
+    flex-grow: 1;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-family: var(--font-family);
+}
+
+.quest-generator input:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.quest-generator button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.quest-generator button:hover {
+    background-color: #3a80d2;
+}
+
+.discover-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.discover-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+}
+
+.quest-tab {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-align: center;
+    min-height: 150px;
+}
+
+.quest-tab:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    border-color: var(--secondary-color);
+}
+
+.quest-tab .quest-emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.quest-tab .quest-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-color);
+}
+
+
+/* --- Quest View --- */
+.quest-view-container {
+    width: 100%;
+}
+
+.progress-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.progress-container span {
+    position: relative;
+    z-index: 2;
+    line-height: 2rem;
+    padding: 0.25rem 0;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+    z-index: 1;
+}
+
+/* --- Lesson View --- */
+.lesson-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.illustration-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    font-size: 4rem;
+}
+
+.lesson-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.lesson-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.lesson-controls button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+.lesson-controls .next-button {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.lesson-controls button:not(.next-button) {
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: var(--text-color);
+}
+
+/* --- Flashcard View --- */
+.flashcard-container {
+    text-align: center;
+}
+
+.flashcard-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.listen-icon-button {
+    background: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0.25rem;
+    color: var(--text-color);
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.options-container button {
+    background: var(--white);
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.options-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.options-container button.correct {
+    background-color: var(--correct);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+.options-container button.incorrect {
+    background-color: var(--incorrect);
+    color: var(--white);
+    opacity: 0.7;
+}
+
+/* --- Sticker Book --- */
+.sticker-book-container {
+    text-align: center;
+}
+
+.sticker-book-container h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.sticker-book-subtitle {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5rem;
+}
+
+.sticker {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.sticker:hover {
+    transform: translateY(-5px) rotate(2deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.sticker-emoji {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.sticker-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* --- Reward Indicator --- */
+.reward-indicator {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    z-index: 1000;
+    animation: fade-in-out 2s forwards;
+}
+
+.reward-indicator.major {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    animation-duration: 3s;
+}
+
+@keyframes fade-in-out {
+    0% { transform: translate(-50%, 20px); opacity: 0; }
+    20% { transform: translate(-50%, 0); opacity: 1; }
+    80% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, -20px); opacity: 0; }
+}
+
+/* --- Confetti --- */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.confetti-particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -20px; /* Start offscreen */
+    opacity: 0;
+    animation: drop 4s ease-in-out forwards;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(0vh) rotateZ(0deg);
+        opacity: 1;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(105vh) rotateZ(720deg);
+        opacity: 0;
+    }
+}
