@@ -48,4 +48,6 @@ Children aged 5-10.
 
 ## Demo
 
+![](seeds_illustrations.png)
+
 https://illustrated-1051240878135.us-west1.run.app
